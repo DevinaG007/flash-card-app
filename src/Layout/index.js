@@ -3,7 +3,7 @@ import Header from "./Header";
 import NotFound from "./NotFound";
 import {Switch, Route, Link} from "react-router-dom";
 import DeckList from "../decks/DeckList";
-
+import Decks from "../decks/Decks";
 
 function Layout() {
   return (
@@ -12,7 +12,7 @@ function Layout() {
       <div className="container">
         <Switch>
         <Route path="/">
-        <DeckList />
+        <Decks />
         </Route>
         {/* TODO: Implement the screen starting here */}
         <Route>

@@ -1,23 +1,24 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { readCard } from "../utils/api";
 
-function Card() {
+
+function Card({cardId}) {
+
   const [cardData, setCardData] = useState({});
 
   useEffect(() => {
     function loadCards() {
-      const loadedCard = readCard;
-      setCardData(loadedCard);
+      readCard(cardId).then(loadedCard => {
+        setCardData(loadedCard)
+        console.log(loadedCard)
+  })
+      
     }
-
     loadCards();
-    return () => {
-      abortController.abort();
-    };
-  }, [cardData]);
+  }, [cardId]);
 
   return (
-    <div className="card w-75 mb-3">
+    <div className="card w-50 mb-3">
       <div className="card-body">
         <p className="card-text">
         {cardData.front}

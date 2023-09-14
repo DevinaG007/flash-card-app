@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Form() {
+function DeckForm() {
   const initialFormState = {
     name: "",
     description: "",
@@ -9,7 +9,7 @@ function Form() {
   const [newDeck, SetNewDeck] = useState({ initialFormState });
 
   const changeHandler = ({ target }) => {
-    SetNewDeck({ ...newDeck, [target.name]: value });
+    SetNewDeck({ ...newDeck, [target.name]: target.value });
   };
   const submitHandler = ({ event }) => {
     // TODO Write a function in parent component that creates newDeck
@@ -57,4 +57,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default DeckForm;

@@ -7,6 +7,8 @@ import Decks from "../decks/Decks";
 import Study from "../study/Study";
 import CreateCard from "../study/CreateCard";
 import EditCard from "../study/EditCard";
+import CreateDeck from "../decks/CreateDeck";
+import EditDeck from "../decks/EditDeck";
 
 function Layout() {
   return (
@@ -18,7 +20,7 @@ function Layout() {
         <Decks />
         </Route> */}
         <Route path="/">
-         <EditCard/>
+         <EditDeck/>
         </Route>
         {/* TODO: Implement the screen starting here */}
         <Route>

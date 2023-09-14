@@ -7,11 +7,7 @@ import { updateCard } from "../utils/api";
 function EditCard({deckId, cardId}){
     deckId = 1;
     cardId = 1;
-    // const initialFormState = {
-    //     front:`${updatedCard.front}`,
-    //     back:`${updatedCard.back}`,
-    //     id:`${updatedCard.id}`
-    // }
+
     const [deckData, setDeckData] = useState({});
     const [newCard, setNewCard] = useState({})
 
@@ -33,8 +29,7 @@ function EditCard({deckId, cardId}){
 
     const submitHandler = (event) => {
         event.preventDefault();
-        updateCard(newCard);
-        setNewCard({})
+        updateCard(newCard).then(setNewCard({}))
     }
 if (deckData.id) return (
     <>

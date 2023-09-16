@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import { readDeck } from "../utils/api";
 import { updateDeck } from "../utils/api";
 import DeckForm from "./DeckForm";
+import { useParams, NavLink , useRouteMatch} from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function EditDeck({ deckId }) {
+function EditDeck() {
+
+  const history = useHistory();
   const [newDeck, setNewDeck] = useState({});
-    deckId = 1;
+  const { deckId } = useParams();
+  
   useEffect(() => {
     function loadDeck() {
       readDeck(deckId).then((loadedDeck) => setNewDeck(loadedDeck));
@@ -13,12 +18,11 @@ function EditDeck({ deckId }) {
     loadDeck();
   }, [deckId]);
 
-  const submitHandler = ({ event }) => {
-    // TODO Write a function in parent component that creates newDeck
-    //TODO Write a function in parent component that edits deck
+  const submitHandler = ( event ) => {
     event.preventDefault();
     updateDeck(newDeck).then(
-    setNewDeck({}))
+      history.push(`/decks/${deckId}`)
+    )
   };
 
   return (
@@ -26,10 +30,10 @@ function EditDeck({ deckId }) {
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Home</a>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li class="breadcrumb-item">
-            <a href="#">{newDeck.name}</a>
+            <NavLink to=".">{newDeck.name}</NavLink>
           </li>
           <li class="breadcrumb-item active" aria-current="page">
             Edit Deck

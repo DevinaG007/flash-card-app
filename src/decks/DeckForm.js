@@ -1,22 +1,17 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function DeckForm({newDeck, setNewDeck, submitHandler}) {
-  // const initialFormState = {
-  //   name: "",
-  //   description: "",
-  //   cards: {},
-  // };
-  // const [newDeck, SetNewDeck] = useState({ initialFormState });
+  const history = useHistory();
+  const clickHandler = (event) => {
+    event.preventDefault();
+    history.go("0")
+  }
 
   const changeHandler = ({ target }) => {
     setNewDeck({ ...newDeck, [target.name]: target.value });
   };
-  // const submitHandler = ({ event }) => {
-  //   // TODO Write a function in parent component that creates newDeck
-  //   //TODO Write a function in parent component that edits deck
-  //   event.preventDefault();
-  //   SetNewDeck(initialFormState);
-  // };
+
   return (
     <>
       <form onSubmit={submitHandler}>
@@ -50,7 +45,7 @@ function DeckForm({newDeck, setNewDeck, submitHandler}) {
           </label>
         </div>
         <div>
-          <button type="button" className="btn btn-secondary mx-1"> {/*TODO implement button handlers to go home or create deck*/}
+          <button type="button" className="btn btn-secondary mx-1" onClick={clickHandler}> {/*TODO implement button handlers to go home or create deck*/}
             Cancel
           </button>
           <button type="submit" className="btn btn-primary mx-1">

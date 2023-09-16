@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { readDeck } from "../utils/api";
+import { readDeck, createCard } from "../utils/api";
 import CardForm from "./CardForm";
-import { createCard } from "../utils/api";
+import { NavLink, useParams, useHistory } from "react-router-dom";
 
-function CreateCard({ deckId }) {
+function CreateCard() {
+    const {deckId} = useParams();
     const initialFormState = {
         front: "",
         back: "",
       };
+      const history = useHistory();
   const [newCard, setNewCard] = useState(initialFormState);
   const [deckData, setDeckData] = useState({});
 
@@ -18,14 +20,11 @@ function CreateCard({ deckId }) {
     loadDeck();
   }, [deckId]);
 
-  deckId = 1;
-
-  const submitHandler = ({ event }) => {
-    // TODO Write a function in parent component that creates newCard
-    //TODO Write a function in parent component that edits edit
+  const submitHandler =  async ( event ) => {
     event.preventDefault();
-    createCard(deckId, newCard); //Double check, might need to use then()
-    setNewCard(initialFormState);
+    createCard(deckId, newCard).then(
+      history.push(`/decks/${deckId}`)
+    )
   };
   
   if (deckData.id)
@@ -34,10 +33,10 @@ function CreateCard({ deckId }) {
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Home</a>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li class="breadcrumb-item">
-              <a href="#">{deckData.name}</a>
+              <NavLink to="../">{deckData.name}</NavLink>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
               Add Card

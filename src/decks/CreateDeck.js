@@ -1,38 +1,48 @@
 import React, { useState, useEffect } from "react";
 import DeckForm from "./DeckForm";
 import { createDeck } from "../utils/api";
+import { NavLink, useHistory } from "react-router-dom";
 
 function CreateDeck() {
   const initialFormState = {
     name: "",
     description: "",
-    cards: {},
+    cards: [],
   };
-  const [newDeck, setNewDeck] = useState({ initialFormState });
-  
-  const submitHandler = ({ event }) => {
-    // TODO Write a function in parent component that creates newDeck
-    //TODO Write a function in parent component that edits deck
+
+  const history = useHistory();
+  const [newDeck, setNewDeck] = useState(initialFormState);
+
+  useEffect(() => {
+
+  }, []);
+
+  const submitHandler =  async (event) => {
     event.preventDefault();
-    createDeck(newDeck).then(
-    setNewDeck(initialFormState))
+    createDeck(newDeck).then(history.go(-1));
   };
+
+  document.title = "Create Deck";
 
   return (
     <>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="#">Home</a>
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
+            <NavLink to="/">Home</NavLink>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             Create Deck
           </li>
         </ol>
       </nav>
-      <h1 className="my-3">Create Deck</h1>
+      <h1 className="my-3">{document.title}</h1>
       <div>
-        <DeckForm submitHandler={submitHandler} newDeck={newDeck} setNewDeck={setNewDeck}/>
+        <DeckForm
+          submitHandler={submitHandler}
+          newDeck={newDeck}
+          setNewDeck={setNewDeck}
+        />
       </div>
     </>
   );

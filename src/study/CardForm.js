@@ -1,12 +1,6 @@
 import React from "react";
 
 function CardForm({ submitHandler, newCard, setNewCard }) {
-  //   const initialFormState = {
-  //     front: "",
-  //     back: "",
-  //   };
-
-  //   const [newCard, setNewCard] = useState(initialFormState);
 
   const changeHandler = ({ target }) => {
     setNewCard({
@@ -14,10 +8,6 @@ function CardForm({ submitHandler, newCard, setNewCard }) {
       [target.name]: target.value,
     });
   };
-  //   const submitHandler = (event) => {
-  //     event.preventDefault();
-  //     setNewCard(initialFormState);
-  //   };
 
   return (
     <>

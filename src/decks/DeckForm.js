@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
+import { useHistory, Link } from "react-router-dom";
 
 function DeckForm({newDeck, setNewDeck, submitHandler}) {
   const history = useHistory();
@@ -45,9 +45,11 @@ function DeckForm({newDeck, setNewDeck, submitHandler}) {
           </label>
         </div>
         <div>
-          <button type="button" className="btn btn-secondary mx-1" onClick={clickHandler}> {/*TODO implement button handlers to go home or create deck*/}
+          <Link to="/decks">
+          <button type="button" className="btn btn-secondary mx-1"> {/*TODO implement button handlers to go home or create deck*/}
             Cancel
           </button>
+          </Link>
           <button type="submit" className="btn btn-primary mx-1">
             Submit
           </button>

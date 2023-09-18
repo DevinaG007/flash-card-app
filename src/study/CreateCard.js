@@ -24,6 +24,8 @@ function CreateCard() {
     event.preventDefault();
     createCard(deckId, newCard).then(
       history.push(`/decks/${deckId}`)
+    ).then(
+      history.go(0)
     )
   };
   
@@ -36,7 +38,7 @@ function CreateCard() {
               <NavLink to="/">Home</NavLink>
             </li>
             <li class="breadcrumb-item">
-              <NavLink to="../">{deckData.name}</NavLink>
+              <NavLink to={`/decks/${deckId}`}>{deckData.name}</NavLink>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
               Add Card
@@ -44,7 +46,7 @@ function CreateCard() {
           </ol>
         </nav>
         <h3>{`${deckData.name}: Add Card`}</h3>
-        <CardForm submitHandler={submitHandler} newCard={newCard} setNewCard={setNewCard}/>
+        <CardForm submitHandler={submitHandler} newCard={newCard} setNewCard={setNewCard} deckId={deckId}/>
       </>
     );
   else {

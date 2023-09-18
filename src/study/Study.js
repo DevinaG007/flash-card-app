@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from "react";
 import { readDeck } from "../utils/api";
-import { useParams, NavLink, Link, useRouteMatch} from "react-router-dom";
+import { useParams, NavLink, Link} from "react-router-dom";
 import StudyCards from "./StudyCards";
 
 
 function Study() {
     const [deckData, setDeckData] = useState({});
     const { deckId } = useParams();
-    const {url} = useRouteMatch();
    
 
   useEffect(() => {
@@ -18,11 +17,6 @@ function Study() {
   }, [deckId]);
 
   const deckCards = deckData.cards;
- 
-    //add a state where the default display for a card is the front, but the back is shown when flipped is pressed
-    //add a function handler to move to next card in the array when next is clicked (try useHistory goForward/go back?)
-  
-   
     if (deckData.id) {
       
     return (
@@ -33,7 +27,7 @@ function Study() {
             <NavLink to="/">Home</NavLink>
           </li>
           <li className="breadcrumb-item">
-            <NavLink to=".">{deckData.name}</NavLink>
+            <Link to={`/decks/${deckId}`}>{deckData.name}</Link>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
             Study

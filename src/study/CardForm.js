@@ -1,6 +1,7 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
-function CardForm({ submitHandler, newCard, setNewCard }) {
+function CardForm({ submitHandler, newCard, setNewCard, deckId }) {
 
   const changeHandler = ({ target }) => {
     setNewCard({
@@ -46,9 +47,11 @@ function CardForm({ submitHandler, newCard, setNewCard }) {
           <button type="submit" className="btn btn-primary mx-1">
             Save
           </button>
-          <buton type="button" className="btn btn-secondary mx-1">
+          <Link to={`/decks/${deckId}`}>
+          <button type="button" className="btn btn-secondary mx-1">
             Done
-          </buton>
+          </button>
+          </Link>
         </div>
       </form>
     </>

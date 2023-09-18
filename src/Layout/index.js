@@ -4,7 +4,7 @@ import NotFound from "./NotFound";
 import {Switch, Route, useHistory} from "react-router-dom";
 import DeckList from "../decks/DeckList";
 import CreateDeck from "../decks/CreateDeck";
-import DeckRoutes from "../decks/DeckRoutes";
+import Decks from "../decks/Decks";
 import { deleteDeck } from "../utils/api";
 
 function Layout() {
@@ -13,7 +13,7 @@ function Layout() {
    if (
      window.confirm("Delete this deck?\n You will not be able to recover it.")
    ) {
-     deleteDeck(deckId).then(history.go(-1));
+     deleteDeck(deckId).then(history.push("/")).then(history.go(0))
    } else {
      history.go(0)
    }
@@ -30,9 +30,8 @@ function Layout() {
           <CreateDeck/>
         </Route>
         <Route path={`/decks`}>
-        <DeckRoutes deleteHandler={deleteHandler}/>
+        <Decks deleteHandler={deleteHandler}/>
         </Route>
-        {/* TODO: Implement the screen starting here */}
         <Route>
           <NotFound />
           </Route>

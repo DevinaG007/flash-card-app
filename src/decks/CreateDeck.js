@@ -13,13 +13,11 @@ function CreateDeck() {
   const history = useHistory();
   const [newDeck, setNewDeck] = useState(initialFormState);
 
-  useEffect(() => {
+  useEffect(() => {}, []);
 
-  }, []);
-
-  const submitHandler =  async (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
-    createDeck(newDeck).then(history.go(-1));
+    createDeck(newDeck).then(history.push("/")).then(history.go(0));
   };
 
   document.title = "Create Deck";

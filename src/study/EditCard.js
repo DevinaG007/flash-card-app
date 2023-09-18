@@ -15,7 +15,8 @@ function EditCard(){
       }
       loadDeck();
     }, [deckId]);
-
+    const name= deckData.name;
+    const deckName=name;
     useEffect(() => {
         function loadCard() {
             readCard(cardId).then((loadedCard) => setNewCard(loadedCard));
@@ -34,12 +35,12 @@ if (deckData.id) return (
 <nav aria-label="breadcrumb">
   <ol className="breadcrumb">
     <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-    <li className="breadcrumb-item"><NavLink to="../../">{deckData.name}</NavLink></li>
+    <li className="breadcrumb-item"><NavLink to={`/decks/${deckId}`}>{deckName}</NavLink></li>
     <li className="breadcrumb-item active" aria-current="page">{`Edit Card ${cardId}`}</li>
   </ol>
 </nav>
 <div>
-    <CardForm submitHandler={submitHandler} newCard={newCard} setNewCard={setNewCard}/>
+    <CardForm submitHandler={submitHandler} newCard={newCard} setNewCard={setNewCard} deckId={deckId}/>
 </div>
 </>
 ); else {

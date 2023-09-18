@@ -63,7 +63,7 @@ function DeckView({ deleteHandler, deleteCardHandler }) {
               {deckCards.map((card) => (
                 <li style={{ listStyle: "none" }}>
                   <Card
-                    cardId={card.id}
+                  card={card}
                     deckId={deckId}
                     deleteCardHandler={deleteCardHandler}
                   />

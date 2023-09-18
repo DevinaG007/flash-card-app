@@ -14,7 +14,7 @@
   "cards": [
     {
       "front": "Front side of card 1",
-      "back": "back side of card 2",
+      "back": "back side of card 1",
       "deckId": 1,
       "id": 1
     },
@@ -29,6 +29,24 @@
       "back": "Back side of card 3",
       "deckId": 1,
       "id": 3
+    },
+    {
+      "front": "I've done it",
+      "back": "we are so close to being done with this project",
+      "deckId": 2,
+      "id": 4
+    },
+    {
+      "front": "It's been fun, I feel accomplished",
+      "back": "But I am so sick of this project",
+      "deckId": 2,
+      "id": 5
+    },
+    {
+      "front": "At least it will boost my portfolio",
+      "back": "I'll look better because of it. Maybe it will get me a job.",
+      "deckId": 2,
+      "id": 6
     }
   ]
 }

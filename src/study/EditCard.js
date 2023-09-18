@@ -27,7 +27,7 @@ function EditCard(){
 
     const submitHandler = (event) => {
         event.preventDefault();
-        updateCard(newCard).then(history.go(0))
+        updateCard(newCard).then(history.go(-1))
     }
 if (deckData.id) return (
     <>

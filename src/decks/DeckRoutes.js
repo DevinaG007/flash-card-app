@@ -7,21 +7,27 @@ import CreateCard from "../study/CreateCard";
 import EditCard from "../study/EditCard";
 import { deleteCard } from "../utils/api";
 
-function DeckRoutes({deleteHandler}) {
+function DeckRoutes({ deleteHandler }) {
   const history = useHistory();
   const { path } = useRouteMatch();
-  function deleteCardHandler(cardId){
-    if (window.confirm("Delete this card? \n You will not be able to recover it.")){
-      deleteCard(cardId).then(history.go(0))
+
+  function deleteCardHandler(cardId) {
+    if (
+      window.confirm("Delete this card? \n You will not be able to recover it.")
+    ) {
+      deleteCard(cardId).then(history.go(0));
     } else {
-      history.push(".")
+      history.push(".");
     }
   }
   return (
     <>
       <Switch>
         <Route exact path={path}>
-          <DeckView deleteHandler={deleteHandler} deleteCardHandler={deleteCardHandler}/>
+          <DeckView
+            deleteHandler={deleteHandler}
+            deleteCardHandler={deleteCardHandler}
+          />
         </Route>
         <Route path={`${path}/edit`}>
           <EditDeck />
@@ -30,10 +36,10 @@ function DeckRoutes({deleteHandler}) {
           <Study />
         </Route>
         <Route path={`${path}/cards/new`}>
-            <CreateCard />
+          <CreateCard />
         </Route>
         <Route path={`${path}/cards/:cardId/edit`}>
-            <EditCard />
+          <EditCard />
         </Route>
       </Switch>
     </>

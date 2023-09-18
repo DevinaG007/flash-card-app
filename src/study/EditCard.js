@@ -32,10 +32,10 @@ function EditCard(){
 if (deckData.id) return (
     <>
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-    <li class="breadcrumb-item"><NavLink to="../../">{deckData.name}</NavLink></li>
-    <li class="breadcrumb-item active" aria-current="page">{`Edit Card ${cardId}`}</li>
+  <ol className="breadcrumb">
+    <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
+    <li className="breadcrumb-item"><NavLink to="../../">{deckData.name}</NavLink></li>
+    <li className="breadcrumb-item active" aria-current="page">{`Edit Card ${cardId}`}</li>
   </ol>
 </nav>
 <div>

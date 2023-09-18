@@ -10,14 +10,14 @@ function EditDeck() {
   const history = useHistory();
   const [newDeck, setNewDeck] = useState({});
   const { deckId } = useParams();
-  
+  const deckName = newDeck.name;
   useEffect(() => {
     function loadDeck() {
-      readDeck(deckId).then((loadedDeck) => setNewDeck(loadedDeck));
+      readDeck(deckId).then((loadedDeck) => setNewDeck(loadedDeck))
     }
     loadDeck();
   }, [deckId]);
-
+  
   const submitHandler = ( event ) => {
     event.preventDefault();
     updateDeck(newDeck).then(
@@ -28,14 +28,14 @@ function EditDeck() {
   return (
     <>
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item">
             <NavLink to="/">Home</NavLink>
           </li>
-          <li class="breadcrumb-item">
-            <NavLink to=".">{newDeck.name}</NavLink>
+          <li className="breadcrumb-item">
+            <NavLink to=".">{deckName}</NavLink>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
+          <li className="breadcrumb-item active" aria-current="page">
             Edit Deck
           </li>
         </ol>

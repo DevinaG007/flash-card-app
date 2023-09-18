@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from "react";
 import { readDeck } from "../utils/api";
-import { useParams, NavLink, useRouteMatch} from "react-router-dom";
+import { useParams, NavLink, Link, useRouteMatch} from "react-router-dom";
+import StudyCards from "./StudyCards";
 
 
 function Study() {
     const [deckData, setDeckData] = useState({});
     const { deckId } = useParams();
     const {url} = useRouteMatch();
+   
+
   useEffect(() => {
     function loadDeck() {
       readDeck(deckId).then((loadedDeck) => setDeckData(loadedDeck));
@@ -15,28 +18,13 @@ function Study() {
   }, [deckId]);
 
   const deckCards = deckData.cards;
+ 
     //add a state where the default display for a card is the front, but the back is shown when flipped is pressed
     //add a function handler to move to next card in the array when next is clicked (try useHistory goForward/go back?)
   
    
     if (deckData.id) {
-    const studyCards = deckCards.map((card, index) => (
-      <div className="card mb-3">
-      <div className="card-body">
-        <h5 className="card-title">{`Card ${index + 1} of ${deckCards.length}`}</h5>
-        <p className="card-text">
-            {card.front}
-         {/*TODO Implement code that displays cards from deck, and add functionality to buttons*/}
-        </p>
-        <button type="button" className="btn btn-secondary mx-1">
-          Flip
-        </button>
-        <button type="button" className="btn btn-primary mx-1">
-          Next
-        </button>
-      </div>
-    </div>
-));
+      
     return (
     <>
       <nav aria-label="breadcrumb">
@@ -54,7 +42,16 @@ function Study() {
       </nav>
       <br />
       <h1>{`${deckData.name}: Study`}</h1>
-       {studyCards[0]}
+      { deckCards.length <= 2 ? (
+        <>
+        <h3>Not enough cards.</h3>
+        <p>You need at least 3 cards to study. There are {deckCards.length} cards in this deck.</p>
+        <Link to="./cards/new">
+        <button className="btn btn-primary">Add Cards +</button></Link>
+        </>
+      ) : (<StudyCards deckCards={deckCards}/>)
+      }
+       
     </>
   )} else { return "...Loading"}
 }

@@ -14,6 +14,11 @@
       "name": "Deck 4",
       "description": "Description of Deck 4",
       "id": 3
+    },
+    {
+      "name": "deck luffy",
+      "description": "in gear 5 is so cool",
+      "id": 4
     }
   ],
   "cards": [
@@ -60,7 +65,7 @@
       "id": 7
     },
     {
-      "front": "last card",
+      "front": "last card yyyyy",
       "back": "finally",
       "deckId": 1,
       "id": 8
@@ -70,6 +75,12 @@
       "back": "yahhh",
       "deckId": 1,
       "id": 9
+    },
+    {
+      "front": "new card",
+      "back": "like totally",
+      "deckId": 1,
+      "id": 10
     }
   ]
 }

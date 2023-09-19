@@ -1,14 +1,10 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function DeckForm({newDeck, setNewDeck, submitHandler}) {
-  const history = useHistory();
-  const clickHandler = (event) => {
-    event.preventDefault();
-    history.go("0")
-  }
-
-  const changeHandler = ({ target }) => {
+//form used by CreateDeck and EditDeck
+function DeckForm(props) {
+  const {newDeck, setNewDeck, submitHandler} = props; //newDeck holds the values being changed by the form
+ const changeHandler = ({ target }) => {
     setNewDeck({ ...newDeck, [target.name]: target.value });
   };
 
@@ -45,8 +41,8 @@ function DeckForm({newDeck, setNewDeck, submitHandler}) {
           </label>
         </div>
         <div>
-          <Link to="/decks">
-          <button type="button" className="btn btn-secondary mx-1"> {/*TODO implement button handlers to go home or create deck*/}
+          <Link to="/">
+          <button type="button" className="btn btn-secondary mx-1"> 
             Cancel
           </button>
           </Link>

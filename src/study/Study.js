@@ -1,21 +1,11 @@
 import React, {useEffect, useState} from "react";
 import { readDeck } from "../utils/api";
-import { useParams, NavLink, Link} from "react-router-dom";
+import { NavLink, Link} from "react-router-dom";
 import StudyCards from "./StudyCards";
 
-
-function Study() {
-    const [deckData, setDeckData] = useState({});
-    const { deckId } = useParams();
-   
-
-  useEffect(() => {
-    function loadDeck() {
-      readDeck(deckId).then((loadedDeck) => setDeckData(loadedDeck));
-    }
-    loadDeck();
-  }, [deckId]);
-
+//Component to display the study page for a deck
+function Study({deckId, deckData}) {
+  
   const deckCards = deckData.cards;
     if (deckData.id) {
       

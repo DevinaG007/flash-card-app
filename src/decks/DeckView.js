@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { readDeck } from "../utils/api";
+import React from "react";
 import Card from "../study/Card";
-import { useParams, Link, useRouteMatch, NavLink } from "react-router-dom";
+import { Link, useRouteMatch, NavLink } from "react-router-dom";
 
-function DeckView({ deleteHandler, deleteCardHandler }) {
-  const { deckId } = useParams();
+function DeckView(props) {
+  const { deleteHandler, deleteCardHandler, deckId, deckData } = props;
   const { url } = useRouteMatch();
-  const [deckData, setDeckData] = useState({});
 
-  useEffect(() => {
-    function loadDeck() {
-      readDeck(deckId).then((loadedDeck) => setDeckData(loadedDeck));
-    }
-    loadDeck();
-  }, [deckId]);
   const deckCards = deckData.cards;
   if (deckData.id)
     return (
@@ -53,8 +45,8 @@ function DeckView({ deleteHandler, deleteCardHandler }) {
                   />
                   <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
                   <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
-                </svg>{' '}
-                 Study
+                </svg>{" "}
+                Study
               </button>
             </Link>
             <Link to={`${url}/cards/new`}>

@@ -1,22 +1,30 @@
-import React from "react";
-import { Route, Switch, useHistory, useRouteMatch } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Route, Switch, useHistory, useRouteMatch, useParams } from "react-router-dom";
 import DeckView from "./DeckView";
 import Study from "../study/Study";
 import EditDeck from "./EditDeck";
 import CreateCard from "../study/CreateCard";
 import EditCard from "../study/EditCard";
-import DeckList from "./DeckList";
-import { deleteCard } from "../utils/api";
+import { deleteCard, readDeck } from "../utils/api";
 
+//main parent component
 function Decks({ deleteHandler }) {
   const history = useHistory();
   const { path } = useRouteMatch();
-  const deckPath = `${path}/:deckId`
+  const {deckId} = useParams(); //deckId is passed as a prop to necessary child components
+  const [deckData, setDeckData] = useState({}); //state that holds the data from the loaded card, passed to children components
+
+  useEffect(() => {
+    function loadDeck() {
+      readDeck(deckId).then((loadedDeck) => setDeckData(loadedDeck));
+    }
+    loadDeck();
+  }, [deckId]);
   function deleteCardHandler(cardId) {
     if (
       window.confirm("Delete this card? \n You will not be able to recover it.")
     ) {
-      deleteCard(cardId).then(history.go(0));
+      deleteCard(cardId).then(history.push(`/decks/${deckId}`));
     } else {
       history.push(".");
     }
@@ -25,25 +33,24 @@ function Decks({ deleteHandler }) {
     <>
       <Switch>
         <Route exact path={path}>
-          <DeckList />
-        </Route>
-        <Route exact path={deckPath}>
           <DeckView
             deleteHandler={deleteHandler}
             deleteCardHandler={deleteCardHandler}
+            deckId={deckId}
+            deckData={deckData}
           />
         </Route>
-        <Route path={`${deckPath}/edit`}>
-          <EditDeck />
+        <Route path={`${path}/edit`}>
+          <EditDeck deckId={deckId} />
         </Route>
-        <Route path={`${deckPath}/study`}>
-          <Study />
+        <Route path={`${path}/study`}>
+          <Study deckId={deckId} deckData={deckData}/>
         </Route>
-        <Route path={`${deckPath}/cards/new`}>
-          <CreateCard />
+        <Route path={`${path}/cards/new`}>
+          <CreateCard deckId={deckId} deckData={deckData}/>
         </Route>
-        <Route path={`${deckPath}/cards/:cardId/edit`}>
-          <EditCard />
+        <Route path={`${path}/cards/:cardId/edit`}>
+          <EditCard deckId={deckId} deckData={deckData}/>
         </Route>
       </Switch>
     </>

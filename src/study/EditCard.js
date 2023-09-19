@@ -1,22 +1,14 @@
 import React, {useState, useEffect} from "react";
 import CardForm from "./CardForm";
-import { readDeck, readCard, updateCard } from "../utils/api";
+import { readCard, updateCard } from "../utils/api";
 import {useParams, NavLink, useHistory} from "react-router-dom";
 
-function EditCard(){
-    const {deckId, cardId} = useParams();
+//edits existing card in a deck
+function EditCard({deckId, deckData}){
+    const {cardId} = useParams();
     const history = useHistory();
-    const [deckData, setDeckData] = useState({});
     const [newCard, setNewCard] = useState({})
 
-    useEffect(() => {
-      function loadDeck() {
-        readDeck(deckId).then((loadedDeck) => setDeckData(loadedDeck));
-      }
-      loadDeck();
-    }, [deckId]);
-    const name= deckData.name;
-    const deckName=name;
     useEffect(() => {
         function loadCard() {
             readCard(cardId).then((loadedCard) => setNewCard(loadedCard));
@@ -28,14 +20,14 @@ function EditCard(){
 
     const submitHandler = (event) => {
         event.preventDefault();
-        updateCard(newCard).then(history.go(-1))
+        updateCard(newCard).then(history.push(`/decks/${deckId}`)).then(history.go(0))
     }
 if (deckData.id) return (
     <>
 <nav aria-label="breadcrumb">
   <ol className="breadcrumb">
     <li className="breadcrumb-item"><NavLink to="/">Home</NavLink></li>
-    <li className="breadcrumb-item"><NavLink to={`/decks/${deckId}`}>{deckName}</NavLink></li>
+    <li className="breadcrumb-item"><NavLink to={`/decks/${deckId}`}>{deckData.name}</NavLink></li>
     <li className="breadcrumb-item active" aria-current="page">{`Edit Card ${cardId}`}</li>
   </ol>
 </nav>

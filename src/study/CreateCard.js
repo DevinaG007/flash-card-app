@@ -1,24 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { readDeck, createCard } from "../utils/api";
+import React, { useState } from "react";
+import {  createCard } from "../utils/api";
 import CardForm from "./CardForm";
-import { NavLink, useParams, useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
-function CreateCard() {
-    const {deckId} = useParams();
+//function to add a card to a deck
+function CreateCard({deckId, deckData}) { 
     const initialFormState = {
         front: "",
         back: "",
       };
       const history = useHistory();
   const [newCard, setNewCard] = useState(initialFormState);
-  const [deckData, setDeckData] = useState({});
-
-  useEffect(() => {
-    function loadDeck() {
-      readDeck(deckId).then((loadedDeck) => setDeckData(loadedDeck));
-    }
-    loadDeck();
-  }, [deckId]);
 
   const submitHandler =  async ( event ) => {
     event.preventDefault();
@@ -29,18 +21,18 @@ function CreateCard() {
     )
   };
   
-  if (deckData.id)
+  if (deckData.id) //check to see if API call has completed
     return (
       <>
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
               <NavLink to="/">Home</NavLink>
             </li>
-            <li class="breadcrumb-item">
+            <li className="breadcrumb-item">
               <NavLink to={`/decks/${deckId}`}>{deckData.name}</NavLink>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">
+            <li className="breadcrumb-item active" aria-current="page">
               Add Card
             </li>
           </ol>

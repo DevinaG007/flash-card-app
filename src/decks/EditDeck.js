@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 import { readDeck } from "../utils/api";
 import { updateDeck } from "../utils/api";
 import DeckForm from "./DeckForm";
-import { useParams, NavLink, useHistory,  } from "react-router-dom";
-
-function EditDeck() {
+import {NavLink, useHistory,  } from "react-router-dom";
+//Edits existing deck
+function EditDeck({deckId}) {
   const history = useHistory();
   const [newDeck, setNewDeck] = useState({});
   const [currentDeck, setCurrentDeck] = useState({});
-  const { deckId } = useParams();
 
   useEffect(() => {
     function loadDeck() {

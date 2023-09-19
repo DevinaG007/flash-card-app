@@ -3,6 +3,7 @@ import Deck from "./Deck";
 import { listDecks } from "../utils/api";
 import { Link} from "react-router-dom";
 
+//Displays list of decks on homepage
 function DeckList({ deleteHandler }) {
   const [decks, setDecks] = useState([]);
 
@@ -18,7 +19,7 @@ function DeckList({ deleteHandler }) {
       <Link to={`/decks/new`}>
         <button type="button" className="btn btn-secondary my-3">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg" //Added some icons from Bootstrap icon library
             width="16"
             height="16"
             fill="currentColor"

@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
+//component for functionality of Study page
 function StudyCards({ deckCards }) {
   const history = useHistory();
   const [currentCard, setCurrentCard] = useState(0);
-  const [cardDisplay, setCardDisplay] = useState("");
+  const [cardDisplay, setCardDisplay] = useState(""); //state that holds current card display
   useEffect(() => {
     setCardDisplay(cardsToStudyFront[currentCard]);
   }, [currentCard]);
 
   const flipFrontHandler = (event) => {
     event.preventDefault();
-    setCardDisplay(cardsToStudyBack[currentCard]);
+    setCardDisplay(cardsToStudyBack[currentCard]); //handlers for Flip buttons
   };
   const flipBackHandler = (event) => {
     event.preventDefault();
     setCardDisplay(cardsToStudyFront[currentCard]);
   };
 
-  const nextCardHandler = (event) => {
+  const nextCardHandler = (event) => { //handler for next button
     event.preventDefault();
     if (currentCard === deckCards.length - 1) {
       if (
@@ -32,11 +33,10 @@ function StudyCards({ deckCards }) {
       }
     } else {
       setCurrentCard(currentCard + 1);
-      console.log(currentCard);
     }
   };
 
-  const cardsToStudyFront = deckCards.map((card, index) => (
+  const cardsToStudyFront = deckCards.map((card, index) => ( //maps the display for the front of cards
     <div className="card mb-3">
       <div className="card-body">
         <h5 className="card-title">{`Card ${index + 1} of ${
@@ -55,7 +55,7 @@ function StudyCards({ deckCards }) {
       </div>
     </div>
   ));
-  const cardsToStudyBack = deckCards.map((card, index) => (
+  const cardsToStudyBack = deckCards.map((card, index) => ( //maps the display for back of cards. Adds next button
     <div className="card mb-3">
       <div className="card-body">
         <h5 className="card-title">{`Card ${index + 1} of ${

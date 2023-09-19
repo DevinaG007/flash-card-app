@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Card({ card, deckId, deleteCardHandler}) {
   const cardId = card.id
-//TODO - add condition to decklist where if there are no cards, display a message to user to add a card
+  
   return (
     <div className="card w-50">
       <div className="card-body">

@@ -29,7 +29,7 @@ function Layout() {
         <Route exact path={`/decks/new`}>
           <CreateDeck/>
         </Route>
-        <Route path={`/decks`}>
+        <Route path={`/decks/:deckId`}>
         <Decks deleteHandler={deleteHandler}/>
         </Route>
         <Route>

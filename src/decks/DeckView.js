@@ -76,7 +76,8 @@ function DeckView(props) {
           <br />
           <div>
             <ul>
-              {deckCards.map((card, index) => (
+              { deckCards.length > 0 ? 
+              deckCards.map((card, index) => (
                 <li style={{ listStyle: "none" }} key={index}>
                   <Card
                     card={card}
@@ -84,7 +85,9 @@ function DeckView(props) {
                     deleteCardHandler={deleteCardHandler}
                   />
                 </li>
-              ))}
+              )) : (  
+                <p>No cards to display. Add a card to begin studying.</p>
+                )}
             </ul>
           </div>
         </div>

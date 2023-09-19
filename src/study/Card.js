@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function Card({ card, deckId, deleteCardHandler}) {
   const cardId = card.id
-  
+
   return (
     <div className="card w-50">
       <div className="card-body">
@@ -28,7 +28,7 @@ function Card({ card, deckId, deleteCardHandler}) {
         </button>
       </div>
     </div>
-  );
+  ); 
 }
 
 export default Card;

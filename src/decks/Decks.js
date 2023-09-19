@@ -20,13 +20,14 @@ function Decks({ deleteHandler }) {
     }
     loadDeck();
   }, [deckId]);
+
   function deleteCardHandler(cardId) {
     if (
       window.confirm("Delete this card? \n You will not be able to recover it.")
     ) {
-      deleteCard(cardId).then(history.push(`/decks/${deckId}`));
+      deleteCard(cardId).then(history.push(`/decks/${deckId}`)).then(history.go(0))
     } else {
-      history.push(".");
+      history.go("0");
     }
   }
   return (

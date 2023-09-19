@@ -1,7 +1,7 @@
 {
   "decks": [
     {
-      "name": "Rendering In React Edited x4",
+      "name": "Rendering In React",
       "description": "React's component structure allows for quickly building a complex web application that relies on DOM manipulation.",
       "id": 1
     },
@@ -9,37 +9,9 @@
       "name": "React Router",
       "description": "React Router is a collection of navigational components that compose declaratively with your application.",
       "id": 2
-    },
-    {
-      "name": "Deck 4",
-      "description": "Description of Deck 4",
-      "id": 3
-    },
-    {
-      "name": "deck luffy",
-      "description": "in gear 5 is so cool",
-      "id": 4
     }
   ],
   "cards": [
-    {
-      "front": "Front side of card yeet",
-      "back": "back side of card gaga",
-      "deckId": 1,
-      "id": 1
-    },
-    {
-      "front": "front side of card 2",
-      "back": "back side of card 2",
-      "deckId": 1,
-      "id": 2
-    },
-    {
-      "front": "Front side of card 3",
-      "back": "Back side of card 3",
-      "deckId": 1,
-      "id": 3
-    },
     {
       "front": "I've done it",
       "back": "we are so close to being done with this project",
@@ -75,12 +47,6 @@
       "back": "yahhh",
       "deckId": 1,
       "id": 9
-    },
-    {
-      "front": "new card",
-      "back": "like totally",
-      "deckId": 1,
-      "id": 10
     }
   ]
 }

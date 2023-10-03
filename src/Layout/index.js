@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
 import {Switch, Route, useHistory} from "react-router-dom";
@@ -8,8 +8,13 @@ import Decks from "../decks/Decks";
 import { deleteDeck } from "../utils/api";
 
 function Layout() {
+  const initialFormState = {
+    name: "",
+    description: "",
+    cards: [],
+  };
   const history = useHistory();
-
+  const [newDeck, setNewDeck] = useState(initialFormState);
   //function to delete cards when delete button is clicked
   const deleteHandler = (deckId) => {
    if (
@@ -31,10 +36,10 @@ function Layout() {
           <DeckList deleteHandler={deleteHandler}/>
         </Route>
         <Route exact path={`/decks/new`}>
-          <CreateDeck/>
+          <CreateDeck newDeck={newDeck} setNewDeck={setNewDeck}/>
         </Route>
         <Route path={`/decks/:deckId`}>
-        <Decks deleteHandler={deleteHandler}/>
+        <Decks deleteHandler={deleteHandler} newDeck={newDeck} setNewDeck={{setNewDeck}}/>
         </Route>
         <Route>
           <NotFound />

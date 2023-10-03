@@ -1,19 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import DeckForm from "./DeckForm";
 import { createDeck } from "../utils/api";
 import { NavLink, useHistory } from "react-router-dom";
 
-function CreateDeck() {
-  const initialFormState = {
-    name: "",
-    description: "",
-    cards: [],
-  };
-
-  const history = useHistory();
-  const [newDeck, setNewDeck] = useState(initialFormState);
-
-  useEffect(() => {}, []);
+function CreateDeck({newDeck, setNewDeck}) {
+ const history = useHistory();
+  // const [newDeck, setNewDeck] = useState(initialFormState);
+  
+  // useEffect(() => {
+  //   setNewDeck(initialFormState)
+  // }, []);
 
   const submitHandler = async (event) => {
     event.preventDefault();

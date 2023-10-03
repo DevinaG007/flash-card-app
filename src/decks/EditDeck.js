@@ -14,7 +14,7 @@ function EditDeck({deckId, deckData}) {
       history.push(`/decks/${deckId}`)
     ).then(history.go(0))
   }
-  console.log(deckData)
+
   useEffect(() => {
     setNewDeck(deckData)
   }, [deckData])

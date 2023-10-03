@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+
 //form used by CreateCard and EditCard components
 function CardForm(props) {
   const { submitHandler, newCard, setNewCard, deckId } = props; //newCard is the state that holds the value for inputs

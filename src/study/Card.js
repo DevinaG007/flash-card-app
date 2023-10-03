@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+//displays a single card from a deck
 function Card({ card, deckId, deleteCardHandler}) {
   const cardId = card.id
 

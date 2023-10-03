@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../study/Card";
 import { Link, useRouteMatch, NavLink } from "react-router-dom";
 
+//displays view of one deck, including cards
 function DeckView(props) {
   const { deleteHandler, deleteCardHandler, deckId, deckData } = props;
   const { url } = useRouteMatch();

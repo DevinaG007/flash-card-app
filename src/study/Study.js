@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import { readDeck } from "../utils/api";
+import React from "react";
+
 import { NavLink, Link} from "react-router-dom";
 import StudyCards from "./StudyCards";
 
@@ -33,7 +33,7 @@ function Study({deckId, deckData}) {
         <Link to="./cards/new">
         <button className="btn btn-primary">Add Cards +</button></Link>
         </>
-      ) : (<StudyCards deckCards={deckCards}/>)
+      ) : <StudyCards deckCards={deckCards}/>
       }
        
     </>

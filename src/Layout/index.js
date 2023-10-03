@@ -9,6 +9,8 @@ import { deleteDeck } from "../utils/api";
 
 function Layout() {
   const history = useHistory();
+
+  //function to delete cards when delete button is clicked
   const deleteHandler = (deckId) => {
    if (
      window.confirm("Delete this deck?\n You will not be able to recover it.")
@@ -18,6 +20,8 @@ function Layout() {
      history.go(0)
    }
  };
+
+ //parent component routes to children components
   return (
     <>
       <Header />

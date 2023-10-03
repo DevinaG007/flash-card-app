@@ -1,26 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { readDeck } from "../utils/api";
+import React, { useState } from "react";
 import { updateDeck } from "../utils/api";
 import DeckForm from "./DeckForm";
 import {NavLink, useHistory,  } from "react-router-dom";
+
 //Edits existing deck
-function EditDeck({deckId}) {
+function EditDeck({deckId, deckData}) {
   const history = useHistory();
-  const [newDeck, setNewDeck] = useState({});
-  const [currentDeck, setCurrentDeck] = useState({});
-
-  useEffect(() => {
-    function loadDeck() {
-      readDeck(deckId)
-        .then((loadedDeck) => {
-          setNewDeck(loadedDeck)
-          setCurrentDeck(loadedDeck)
-        })
-        
-    }
-    loadDeck();
-  }, [deckId]);
-
+  const [newDeck, setNewDeck] = useState(deckData);
+  
   const submitHandler = (event) => {
     event.preventDefault();
     updateDeck(newDeck).then(
@@ -37,7 +24,7 @@ function EditDeck({deckId}) {
               <NavLink to="/">Home</NavLink>
             </li>
             <li className="breadcrumb-item">
-              <NavLink to={`/decks/${deckId}`}>{currentDeck.name}</NavLink>
+              <NavLink to={`/decks/${deckId}`}>{deckData.name}</NavLink>
             </li>
             <li className="breadcrumb-item active" aria-current="page">
               Edit Deck

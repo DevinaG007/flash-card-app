@@ -7,13 +7,13 @@ import CreateCard from "../study/CreateCard";
 import EditCard from "../study/EditCard";
 import { deleteCard, readDeck } from "../utils/api";
 
-//main parent component
+//main parent component that passes state and information down to child components
 function Decks({ deleteHandler }) {
   const history = useHistory();
   const { path } = useRouteMatch();
   const {deckId} = useParams(); //deckId is passed as a prop to necessary child components
-  const [deckData, setDeckData] = useState({}); //state that holds the data from the loaded card, passed to children components
-
+  const [deckData, setDeckData] = useState({}); //deckData is passed down to child components
+ 
   useEffect(() => {
     function loadDeck() {
       readDeck(deckId).then((loadedDeck) => setDeckData(loadedDeck));
@@ -42,7 +42,7 @@ function Decks({ deleteHandler }) {
           />
         </Route>
         <Route path={`${path}/edit`}>
-          <EditDeck deckId={deckId} />
+          <EditDeck deckId={deckId} deckData={deckData}/>
         </Route>
         <Route path={`${path}/study`}>
           <Study deckId={deckId} deckData={deckData}/>

@@ -10,7 +10,7 @@ coverage/
 
 # production
 build/
-
+.env.production
 # misc
 .eslintcache
 .DS_Store

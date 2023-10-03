@@ -3,7 +3,8 @@ import {  createCard } from "../utils/api";
 import CardForm from "./CardForm";
 import { NavLink, useHistory } from "react-router-dom";
 
-//function to add a card to a deck
+
+//component to add a card to a deck
 function CreateCard({deckId, deckData}) { 
     const initialFormState = {
         front: "",
@@ -21,7 +22,7 @@ function CreateCard({deckId, deckData}) {
     )
   };
   
-  if (deckData.id) //check to see if API call has completed
+  if (deckData.id) 
     return (
       <>
         <nav aria-label="breadcrumb">

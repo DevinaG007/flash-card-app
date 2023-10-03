@@ -3,12 +3,12 @@ import CardForm from "./CardForm";
 import { readCard, updateCard } from "../utils/api";
 import {useParams, NavLink, useHistory} from "react-router-dom";
 
-//edits existing card in a deck
+
+//component edits existing card in a deck
 function EditCard({deckId, deckData}){
     const {cardId} = useParams();
     const history = useHistory();
     const [newCard, setNewCard] = useState({})
-
     useEffect(() => {
         function loadCard() {
             readCard(cardId).then((loadedCard) => setNewCard(loadedCard));

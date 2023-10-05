@@ -5,11 +5,6 @@ import { NavLink, useHistory } from "react-router-dom";
 
 function CreateDeck({newDeck, setNewDeck}) {
  const history = useHistory();
-  // const [newDeck, setNewDeck] = useState(initialFormState);
-  
-  // useEffect(() => {
-  //   setNewDeck(initialFormState)
-  // }, []);
 
   const submitHandler = async (event) => {
     event.preventDefault();

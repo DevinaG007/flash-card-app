@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import CardForm from "./CardForm";
 import { readCard, updateCard } from "../utils/api";
 import {useParams, NavLink, useHistory} from "react-router-dom";
@@ -8,13 +8,13 @@ import {useParams, NavLink, useHistory} from "react-router-dom";
 function EditCard({deckId, deckData}){
     const {cardId} = useParams();
     const history = useHistory();
-    const [newCard, setNewCard] = useState({})
+    const [newCard, setNewCard] = useState({});
     useEffect(() => {
         function loadCard() {
             readCard(cardId).then((loadedCard) => setNewCard(loadedCard));
         }
         loadCard();
-    }, [cardId])
+    }, [cardId]);
 
     
 

@@ -6,7 +6,7 @@ import {NavLink, useHistory,  } from "react-router-dom";
 //Edits existing deck
 function EditDeck({deckId, deckData}) {
   const history = useHistory();
-  const [newDeck, setNewDeck] = useState({});
+  const [newDeck, setNewDeck] = useState({})
   
   const submitHandler = (event) => {
     event.preventDefault();
@@ -18,6 +18,7 @@ function EditDeck({deckId, deckData}) {
   useEffect(() => {
     setNewDeck(deckData)
   }, [deckData])
+
   if (newDeck.name) {
     return (
       <>

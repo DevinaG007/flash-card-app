@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import {  createCard } from "../utils/api";
 import CardForm from "./CardForm";
 import { NavLink, useHistory } from "react-router-dom";
 
 
 //component to add a card to a deck
-function CreateCard({deckId, deckData}) { 
-    const initialFormState = {
-        front: "",
-        back: "",
-      };
+function CreateCard({deckId, deckData, newCard, setNewCard}) { 
+
       const history = useHistory();
-  const [newCard, setNewCard] = useState(initialFormState);
+  // const [newCard, setNewCard] = useState(initialFormState);
 
   const submitHandler =  async ( event ) => {
     event.preventDefault();
